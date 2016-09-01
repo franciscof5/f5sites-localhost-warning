@@ -2,37 +2,39 @@
 /* 
 Plugin Name: Localhost Warn!
 Plugin URI: www.f5sites.com/localhost-warn
+Description: Tired of not knowing when you are on development server?
 Author: Francisco Matelli Matulovic
 Author URI: www.franciscomat.com
 Version: 0.1
-Description: Tired of not knowing when you are on development server? Fill the hostname and set a custom html/css warn!
 Tags: localhost, maintance
 */
 
 add_action("init", "f5_warn");
 
 function f5_warn () {
-	if(gethostname()==get_option("host1name")) {
-		echo get_option("host1html");
-	} elseif(gethostname()==get_option("host2name")) {
-		echo get_option("host2html");
-	} elseif(gethostname()==get_option("host3name")) {
-		echo get_option("host3html");
+	if(get_option("host1name")) {
+		if(gethostname()==get_option("host1name")) {
+			echo get_option("host1html");
+		} elseif(gethostname()==get_option("host2name")) {
+			echo get_option("host2html");
+		} elseif(gethostname()==get_option("host3name")) {
+			echo get_option("host3html");
+		}
+	} else {
+		//Uncomment line above to create default conf without need to configure wp-admin
+		if(gethostname()=="note-itautec"){ echo '<div style="background:#B33;position:fixed;top:0px;z-index:99999999;width:25%;left:20%;color:#FFF;font-weight:600;font-size:8px;text-align:center;">localhost - development server (hostname: note-itautec)</div>'; }
 	}
 }
 
-
-
 add_filter( 'plugin_action_links', 'f5_warn_plugin_link', 10, 2 );
 
-function f5_warn_plugin_link( $links, $file ) 
-{
-    if ( $file == plugin_basename(dirname(__FILE__) . '/f5_localhost_warning.php') ) 
+function f5_warn_plugin_link ( $links, $file ) {
+    if ( $file == plugin_basename(dirname(__FILE__) . '/localhost_warn.php') ) 
     {
         /*
          * Insert the link at the beginning
          */
-        $in = '<a href="options-general.php?page=f5-localhost-warning%2Ff5_localhost_warning.php">' . __('Settings','mtt') . '</a>';
+        $in = '<a href="options-general.php?page=localhost-warn%2Flocalhost_warn.php">' . __('Settings','mtt') . '</a>';
         array_unshift($links, $in);
 
         /*
@@ -46,7 +48,6 @@ function f5_warn_plugin_link( $links, $file )
 add_action('admin_menu', 'f5_warn_create_menu');
 
 function f5_warn_create_menu() {
-
 	//create new top-level menu
 	add_submenu_page('options-general.php', 'Localhost Warn!', 'Localhost Warn!', 'administrator', __FILE__, 'f5_warn_settings' , plugins_url('/images/icon.png', __FILE__) );
 
