@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: 
-Donate link: http://f5sites.com/f5-localhost-warning
+Donate link: http://f5sites.com/localhost-warning
 Tags: localhost, maintance
 Requires at least: 3.2
 Tested up to: 3.2
