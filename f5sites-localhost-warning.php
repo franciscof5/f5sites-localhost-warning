@@ -1,7 +1,7 @@
 <?php
 /* 
-Plugin Name: Localhost Warn!
-Plugin URI: www.f5sites.com/localhost-warn
+Plugin Name: F5 Sites | Localhost Warning
+Plugin URI: https://www.f5sites.com/software/wordpress/f5sites-localhost-warning
 Description: Tired of not knowing when you are on development server?
 Author: Francisco Matelli Matulovic
 Author URI: www.franciscomat.com
