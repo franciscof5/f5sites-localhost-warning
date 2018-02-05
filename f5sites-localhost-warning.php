@@ -9,7 +9,8 @@ Version: 0.1
 Tags: localhost, maintance
 */
 
-add_action("init", "f5_warn");
+add_action("wp_footer", "f5_warn");
+add_action("admin_footer", "f5_warn");
 
 function f5_warn () {
 	if(get_option("host1name")) {
