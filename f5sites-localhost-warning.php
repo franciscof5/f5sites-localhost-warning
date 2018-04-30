@@ -23,7 +23,10 @@ function f5_warn () {
 		}
 	} else {
 		//Uncomment line above to create default conf without need to configure wp-admin
-		if(gethostname()=="note-itautec" || gethostname()=="note-samsung"){ echo '<div style="background:#B33;position:fixed;top:0px;z-index:99999999;width:25%;left:20%;color:#FFF;font-weight:600;font-size:8px;text-align:center;">localhost - development server (hostname: note-itautec)</div>'; }
+		if(gethostname()=="note-itautec" || gethostname()=="note-samsung") {
+			echo '<div style="background:#B33;position:fixed;top:0px;z-index:99999999;width:14%;left:43%;color:#FFF;font-weight:600;font-size:8px;text-align:center;">DEV SERVER</div>'; 
+			#echo '<div style="background:#B33;position:fixed;top:0px;z-index:99999999;width:25%;left:20%;color:#FFF;font-weight:600;font-size:8px;text-align:center;">localhost - development server (hostname: note-itautec)</div>'; 
+		}
 	}
 }
 
