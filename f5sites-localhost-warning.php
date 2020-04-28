@@ -24,7 +24,7 @@ function f5_warn () {
 			echo get_option("host3html");
 		}
 	} else {
-		echo '<div style="background:#B33;position:fixed;top:0px;z-index:99999999;width:14%;left:43%;color:#FFF;font-weight:600;font-size:8px;text-align:center;">DEV SERVER</div>'; 
+		echo '<div style="background:#B33;position:fixed;top:0px;z-index:99999999;width:14%;left:43%;color:#FFF;font-weight:600;font-size:8px;text-align:center;">'.gethostname().'</div>'; 
 	}
 }
 /*
