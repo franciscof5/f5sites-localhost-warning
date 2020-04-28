@@ -9,8 +9,10 @@ Version: 0.1
 Tags: localhost, maintance
 */
 
-add_action("wp_footer", "f5_warn");
-add_action("admin_footer", "f5_warn");
+if(gethostname()!="f5sites_linode_0" && ($_SERVER['SERVER_ADDR']!="45.33.113.61")) {
+	add_action("wp_footer", "f5_warn");
+	add_action("admin_footer", "f5_warn");
+}
 
 function f5_warn () {
 	if(get_option("host1name")) {
@@ -22,29 +24,18 @@ function f5_warn () {
 			echo get_option("host3html");
 		}
 	} else {
-		//Uncomment line above to create default conf without need to configure wp-admin
-		#if(gethostname()=="note-itautec" || gethostname()=="note-samsung") {
-		if(gethostname()!="f5sites_linode_0") {
-			echo '<div style="background:#B33;position:fixed;top:0px;z-index:99999999;width:14%;left:43%;color:#FFF;font-weight:600;font-size:8px;text-align:center;">DEV SERVER</div>'; 
-			#echo '<div style="background:#B33;position:fixed;top:0px;z-index:99999999;width:25%;left:20%;color:#FFF;font-weight:600;font-size:8px;text-align:center;">localhost - development server (hostname: note-itautec)</div>'; 
-		}
+		echo '<div style="background:#B33;position:fixed;top:0px;z-index:99999999;width:14%;left:43%;color:#FFF;font-weight:600;font-size:8px;text-align:center;">DEV SERVER</div>'; 
 	}
 }
-
+/*
 add_filter( 'plugin_action_links', 'f5_warn_plugin_link', 10, 2 );
 
 function f5_warn_plugin_link ( $links, $file ) {
     if ( $file == plugin_basename(dirname(__FILE__) . '/localhost_warn.php') ) 
     {
-        /*
-         * Insert the link at the beginning
-         */
         $in = '<a href="options-general.php?page=localhost-warn%2Flocalhost_warn.php">' . __('Settings','mtt') . '</a>';
         array_unshift($links, $in);
 
-        /*
-         * Insert at the end
-         */
         // $links[] = '<a href="options-general.php?page=many-tips-together">'.__('Settings','mtt').'</a>';
     }
     return $links;
