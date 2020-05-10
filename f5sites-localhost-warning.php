@@ -9,7 +9,7 @@ Version: 0.1
 Tags: localhost, maintance
 */
 $lines_array = file("/etc/hostname");
-if($lines_array[0]!="francisco-sp") {
+if($lines_array[0]=="francisco-sp") {
 	add_action("wp_footer", "f5_warn");
 	add_action("admin_footer", "f5_warn");
 }
