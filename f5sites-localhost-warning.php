@@ -8,8 +8,8 @@ Author URI: www.franciscomat.com
 Version: 0.1
 Tags: localhost, maintance
 */
-
-if(gethostname()!="05de832e2373" && ($_SERVER['SERVER_ADDR']!="45.33.113.61")) {
+$lines_array = file("/etc/hostname");
+if($lines_array[0]!="francisco-sp") {
 	add_action("wp_footer", "f5_warn");
 	add_action("admin_footer", "f5_warn");
 }
