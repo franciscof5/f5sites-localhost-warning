@@ -8,8 +8,8 @@ Author URI: www.franciscomat.com
 Version: 0.1
 Tags: localhost, maintance
 */
-$local_host_name = file_exists(plugin_dir_path(__FILE__)."show_warn_file");
-if($local_host_name) {
+$is_localhost = file_exists(plugin_dir_path(__FILE__)."localhost");
+if($is_localhost) {
 	add_action("wp_footer", "f5_warn");
 	add_action("admin_footer", "f5_warn");
 }
